@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salvage Agenda</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            tan: '#c07a50', 
+                            dark: '#0f0f11', 
+                            card: '#1e1e20', 
+                            text: '#c7aa92'  
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Oswald', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base reveal state (hidden and pushed down/aside) */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* Active state (visible and in position) */
+        .reveal-up.active, .reveal-left.active, .reveal-right.active {
+            opacity: 1;
+            transform: translate(0);
+        }
+
+        /* Staggered delays for grid items */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Cursor for typing effect */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+            color: #c07a50;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body class="bg-brand-dark text-white font-sans antialiased overflow-x-hidden selection:bg-brand-tan selection:text-white">
+
+    <header id="mission" class="relative min-h-screen flex flex-col border-b border-gray-800">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                 alt="Dark clouds background" 
+                 class="w-full h-full object-cover opacity-20 mix-blend-overlay">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/90 to-transparent"></div>
+        </div>
+
+        <nav class="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-8 flex items-center justify-between reveal-up active">
+            <div class="font-heading font-bold text-2xl tracking-wide uppercase text-white">
+                Salvage Agenda
+            </div>
+            <ul class="hidden md:flex items-center space-x-10 text-sm font-medium text-gray-300">
+                <li class="relative text-white pb-1"><a href="#hard-truths">The Mission</a><span class="absolute bottom-0 left-0 w-full h-[2px] bg-gray-300"></span></li>
+                <li class="hover:text-white cursor-pointer transition-colors duration-200"><a href="#the-book">Hard Truths</a></li>
+                <li class="hover:text-white cursor-pointer transition-colors duration-200"><a href="#join">The Book</a></li>
+            </ul>
+            <button onclick="document.getElementById('join').scrollIntoView();" class="bg-brand-tan hover:bg-brand-tan/90 text-white px-6 py-2.5 text-sm font-bold rounded transition-colors duration-200">
+                Get Started
+            </button>
+        </nav>
+
+        <main class="relative z-10 flex-grow flex items-center w-full max-w-[1400px] mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+                
+                <div class="lg:col-span-7 pr-0 lg:pr-12">
+                    <h1 class="font-heading font-bold uppercase leading-[1.05] tracking-tight mb-8 reveal-left active">
+                        <span class="block text-[5rem] lg:text-[6.5rem] text-white">THE SALVAGE</span>
+                        <span class="block text-[5rem] lg:text-[6.5rem] text-brand-tan">AGENDA</span>
+                    </h1>
+                    
+                    <h2 class="font-heading font-bold text-3xl lg:text-4xl uppercase tracking-wide mb-8 text-gray-200 leading-snug h-[80px] lg:h-[90px]">
+                        <span id="typewriter" class="typing-cursor" data-text="Old parenting systems are failing modern children."></span>
+                    </h2>
+                    <br>
+                    <div class="space-y-6 text-gray-400 text-lg max-w-2xl reveal-up delay-200 active">
+                        <p>And your child is paying the price right now. Quietly. Invisibly. Daily.</p>
+                        <p class="text-gray-300">
+                            <strong>THE SALVAGE AGENDA</strong> is the book all parents, intending parents, and grand parents needs to read before it is too late.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-12 flex flex-wrap items-center gap-4 reveal-up delay-300 active">
+                        <button onclick="document.getElementById('join').scrollIntoView();" class="bg-brand-tan hover:bg-brand-tan/90 text-white px-8 py-4 text-sm font-bold uppercase tracking-wider transition-colors duration-200">
+                            Get Free Instant Access
+                        </button>
+                        <button onclick="document.getElementById('hard-truths').scrollIntoView();" class="border border-gray-600 hover:border-white text-white px-8 py-4 text-sm font-bold uppercase tracking-wider transition-colors duration-200">
+                            Discover The Message
+                        </button>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex justify-end reveal-right active">
+                    <div class="w-full max-w-[500px] shadow-2xl relative">
+                        <img src="nim.jpeg" 
+                             alt="The Salvage Agenda Book Cover" 
+                             class="w-full h-auto object-cover aspect-[2/3] border border-gray-800">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </header>
+
+    <section id="hard-truths" class="w-full max-w-[1400px] mx-auto px-6 py-24">
+        <div class="mb-16 reveal-up">
+            <h2 class="font-heading font-bold text-4xl md:text-[2.75rem] uppercase tracking-wide text-white leading-tight max-w-4xl">
+                Most parents are raising children for a world that no longer exists.
+            </h2>
+            <div class="w-20 h-1 bg-brand-tan mt-6"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-brand-card p-8 rounded-md reveal-left delay-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-tan mb-6"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                <p class="text-gray-300 font-medium leading-snug pr-4">Discipline without explanation creates fear, not wisdom.</p>
+            </div>
+            <div class="bg-brand-card p-8 rounded-md reveal-up delay-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-tan mb-6"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+                <p class="text-gray-300 font-medium leading-snug pr-4">You may be preparing your child for YOUR past, not THEIR future.</p>
+            </div>
+            <div class="bg-brand-card p-8 rounded-md reveal-right delay-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-tan mb-6"><path d="M12 2a4 4 0 0 1 4 4c0 1.473-.798 2.756-1.996 3.42A4 4 0 0 1 16 14v4a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4a4 4 0 0 1 1.996-4.58A4 4 0 0 1 8 6a4 4 0 0 1 4-4Z"/><path d="M12 10v4"/></svg>
+                <p class="text-gray-300 font-medium leading-snug pr-4">The future economy rewards critical thinkers, not blind followers.</p>
+            </div>
+            <div class="bg-brand-card p-8 rounded-md reveal-left delay-100">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-tan mb-6"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>
+                <p class="text-gray-300 font-medium leading-snug pr-4">Silence is not respect. Distance is not discipline.</p>
+            </div>
+            <div class="bg-brand-card p-8 rounded-md reveal-up delay-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-tan mb-6"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                <p class="text-gray-300 font-medium leading-snug pr-4">Your child needs guidance. Not dictatorship.</p>
+            </div>
+            <div class="bg-brand-card p-8 rounded-md reveal-right delay-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-tan mb-6"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 12h5l2-3 4 6 2-3h5"/></svg>
+                <p class="text-gray-300 font-medium leading-snug pr-4">The damage of outdated parenting is quiet. Until suddenly it isn't.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="the-book" class="relative w-full py-32 flex items-center justify-center border-t border-gray-900 reveal-up">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                 alt="Dark landscapes background" 
+                 class="w-full h-full object-cover opacity-10 mix-blend-overlay">
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark via-brand-dark/95 to-brand-dark"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor" class="text-brand-tan mb-8">
+                <path d="M10 11h-4a3 3 0 0 1 3-3v-2a5 5 0 0 0-5 5v6h6v-6zm10 0h-4a3 3 0 0 1 3-3v-2a5 5 0 0 0-5 5v6h6v-6z"/>
+            </svg>
+            <h2 class="font-heading font-bold text-3xl md:text-4xl lg:text-5xl uppercase tracking-wide text-white leading-snug mb-6">
+                "Love without the right tools still produces the wrong outcomes."
+            </h2>
+            <p class="text-brand-text text-lg md:text-xl font-medium">
+                This book costs you NOTHING. But ignoring it could cost your child everything.
+            </p>
+        </div>
+    </section>
+
+    <section id="join" class="w-full py-24 px-6 flex justify-center">
+        <div class="w-full max-w-xl bg-brand-card border border-gray-800 rounded-md p-10 md:p-14 text-center shadow-2xl reveal-up">
+            <h3 class="font-heading font-bold text-3xl uppercase tracking-wide text-white mb-4">
+                Get Instant Access
+            </h3>
+            <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-8">
+                Join thousands of global wise parents who are choosing to parent on purpose.
+            </p>
+            <p class="text-gray-400 text-sm mb-8 text-left">
+                Enter your name and email below.
+            </p>
+
+            <form id="waitlist-form" class="space-y-6 text-left">
+                <div class="flex flex-col">
+                    <label for="firstName" class="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">First Name</label>
+                    <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" class="w-full bg-brand-dark text-white border border-gray-800 rounded px-4 py-3 text-sm focus:outline-none focus:border-brand-tan transition-colors duration-200 placeholder-gray-600" required>
+                </div>
+                <div class="flex flex-col">
+                    <label for="email" class="text-[10px] uppercase tracking-widest font-bold text-gray-400 mb-2">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your best email" class="w-full bg-brand-dark text-white border border-gray-800 rounded px-4 py-3 text-sm focus:outline-none focus:border-brand-tan transition-colors duration-200 placeholder-gray-600" required>
+                </div>
+                
+                <button id="submit-btn" type="submit" class="w-full bg-brand-tan hover:bg-brand-tan/90 text-white font-bold py-4 rounded text-xs md:text-sm uppercase tracking-widest transition-colors duration-200 mt-4 flex items-center justify-center gap-2">
+                    <span id="btn-text">Join The Waitlist</span>
+                    <svg id="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                    </svg>
+                    <svg id="btn-spinner" class="animate-spin hidden h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </button>
+            </form>
+            <p class="text-gray-500 text-xs mt-8">
+                After signup, users are redirected instantly to the private WhatsApp community.
+            </p>
+        </div>
+    </section>
+
+    <section class="w-full py-32 px-6 flex justify-center text-center">
+        <div class="max-w-3xl reveal-up">
+            <h2 class="font-heading font-bold text-4xl md:text-5xl uppercase tracking-wide text-white mb-6">
+                Prepare your kids for their future. Not your past.
+            </h2>
+            <p class="text-gray-300 text-lg mb-10">
+                The next generation is already growing inside a different world.
+            </p>
+            <button onclick="document.getElementById('join').scrollIntoView();" class="bg-brand-tan hover:bg-brand-tan/90 text-white px-8 py-4 text-sm font-bold uppercase tracking-wider transition-colors duration-200 rounded-sm mb-12 shadow-lg">
+                Reserve My Spot
+            </button>
+            <p class="text-gray-500 text-sm tracking-wide">
+                THE SALVAGE AGENDA is waiting for you there.
+            </p>
+        </div>
+    </section>
+
+    <footer class="w-full border-t border-gray-800 py-12 px-6">
+        <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left reveal-up">
+            
+            <div class="font-heading font-bold text-xl uppercase leading-tight text-gray-300 tracking-wider">
+                Salvage<br>Agenda
+            </div>
+
+            <div class="flex flex-col items-center gap-4">
+                <div class="flex items-center gap-6 text-sm text-gray-400 font-medium">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Press Inquiries</a>
+                </div>
+                <a href="#" class="text-sm text-gray-400 font-medium hover:text-white transition-colors">Contact</a>
+            </div>
+
+            <div class="text-xs text-gray-500 uppercase tracking-widest max-w-[250px] md:text-right leading-relaxed">
+                © 2026 The Salvage Agenda. Raising the next generation.
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // 1. Intersection Observer for Scroll Animations
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
+            revealElements.forEach(el => observer.observe(el));
+
+            // 2. Typing Effect for Hero Subtitle
+            const typeWriterElement = document.getElementById('typewriter');
+            const textToType = typeWriterElement.getAttribute('data-text');
+            let typingIndex = 0;
+
+            function type() {
+                if (typingIndex < textToType.length) {
+                    typeWriterElement.textContent += textToType.charAt(typingIndex);
+                    typingIndex++;
+                    const speed = Math.floor(Math.random() * (60 - 30 + 1)) + 30;
+                    setTimeout(type, speed);
+                } else {
+                    setTimeout(() => { typeWriterElement.classList.remove('typing-cursor'); }, 2000);
+                }
+            }
+            setTimeout(() => { typeWriterElement.textContent = ''; type(); }, 800);
+
+            // 3. Form Submission & Backend Integration
+            const form = document.getElementById('waitlist-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnIcon = document.getElementById('btn-icon');
+            const btnSpinner = document.getElementById('btn-spinner');
+
+            // Your specific Google Apps Script URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwf0lNB8XCy5DklpS44u-KztuWGXxYDz6cu00Vi4CQoE0xzSt7kYazExcCK3ciM5sve/exec';
+
+            form.addEventListener('submit', e => {
+                e.preventDefault(); 
+
+                // Start Loading State
+                submitBtn.disabled = true;
+                btnText.textContent = 'Processing...';
+                btnIcon.classList.add('hidden');
+                btnSpinner.classList.remove('hidden');
+                submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+
+                // Send data to Google Script Backend
+                fetch(scriptURL, { 
+                    method: 'POST', 
+                    mode: 'no-cors', // <-- THIS IS THE MAGIC FIX 
+                    body: new FormData(form) 
+                })
+                .then(response => {
+                    // With no-cors, it succeeds silently, so we move straight to redirect!
+                    
+                    // 🚨 REPLACE THIS URL WITH YOUR ACTUAL WHATASPP LINK 🚨
+                    const whatsappLink = "https://whatsapp.com/channel/0029VbD1PdpEQIawpsgozo3x"; 
+                    window.location.href = whatsappLink;
+                    
+                    // Reset form in case user presses the browser back button
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        btnText.textContent = 'Join The Waitlist';
+                        btnIcon.classList.remove('hidden');
+                        btnSpinner.classList.add('hidden');
+                        submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+                        form.reset();
+                    }, 1000);
+                })
+                .catch(error => {
+                    console.error('Error!', error.message);
+                    alert('Something went wrong submitting your info. Please try again.');
+                    
+                    // Stop Loading State on Error
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Join The Waitlist';
+                    btnIcon.classList.remove('hidden');
+                    btnSpinner.classList.add('hidden');
+                    submitBtn.classList.remove('opacity-80', 'cursor-not-allowed');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
